@@ -1,181 +1,114 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Airex Team</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airex Team</title>
+<style>
+  /* Анимация фона */
+  @keyframes gradientAnimation {
+    0% {background: linear-gradient(135deg, #0a2e0a, #003300);}
+    50% {background: linear-gradient(135deg, #003300, #0a2e0a);}
+    100% {background: linear-gradient(135deg, #0a2e0a, #003300);}
+  }
+  body {margin:0; font-family:Arial, sans-serif; color:#fff; overflow-x:hidden; animation:gradientAnimation 20s infinite alternate linear;}
+
+  /* Глитч-эффект названия */
+  .title {font-size:3em; text-align:center; margin:20px 0; position:relative; color:#0f0;}
+  .title::before, .title::after {content:attr(data-text); position:absolute; left:0; width:100%; overflow:hidden;}
+  .title::before {top:2px; left:2px; color:#00ff00; clip:rect(0,900px,50px,0);}
+  .title::after {top:-2px; left:-2px; color:#00aa00; clip:rect(50px,900px,100px,0);}
+
+  /* Логотип */
+  .logo {display:block; margin:0 auto; width:150px;}
+
+  /* Меню-шторка */
+  .menu-toggle {position:fixed; top:20px; left:20px; width:30px; height:25px; cursor:pointer; z-index:1000;}
+  .menu-toggle div {height:5px; background:#0f0; margin:4px 0; transition:0.4s;}
+  .menu {position:fixed; top:0; left:-250px; width:250px; height:100%; background:#002200; transition:0.5s; padding:50px 20px;}
+  .menu a {display:block; color:#0f0; text-decoration:none; margin:20px 0; font-size:1.2em;}
+  .menu.active {left:0;}
+
+  /* Состав команды с горизонтальным скроллом */
+  .team-container {overflow-x:auto; padding:20px;}
+  .team {display:flex; gap:10px; min-width:800px;}
+  .player-card {flex:0 0 18%; min-width:150px; background:rgba(0,50,0,0.6); border:1px solid #0f0; border-radius:10px; text-align:center; cursor:pointer; transition:0.3s;}
+  .player-card img {width:100%; border-bottom:1px solid #0f0; border-radius:10px 10px 0 0;}
+  .player-name {padding:10px 0;}
+
+  /* Модальное окно */
+  .modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:2000;}
+  .modal-content {background:#003300; padding:20px; border:2px solid #0f0; border-radius:10px; max-width:500px; width:90%;}
+  .close {color:#0f0; float:right; font-size:1.5em; cursor:pointer;}
+</style>
 </head>
 <body>
 
-  <!-- ГРУППА 1: Хедер и навигация -->
-  <header>
-    <h1 class="neon-text">Airex Team</h1>
-    <nav>
-      <a href="#about" class="neon-btn">О нас</a>
-      <a href="#team" class="neon-btn">Состав</a>
-      <a href="#contact" class="neon-btn">Контакты</a>
-      <a href="#contact" class="neon-btn apply-btn">Подать заявку</a>
-    </nav>
-  </header>
+<!-- Меню-шторка -->
+<div class="menu-toggle" id="menuToggle"><div></div><div></div><div></div></div>
+<nav class="menu" id="menu">
+  <a href="#news">Новости</a>
+  <a href="#team">Состав</a>
+  <a href="https://t.me/airex_team" target="_blank">Telegram</a>
+  <a href="#info">Информация о команде</a>
+</nav>
 
-  <!-- ГРУППА 2: Основные секции -->
-  <main>
-    <section id="about" class="fade-in">
-      <h2 class="neon-text">О команде</h2>
-      <p>Мы — киберспортивная команда Airex Team. Сражаемся за победу и стиль 🔥</p>
-    </section>
+<!-- Название и логотип -->
+<h1 class="title" data-text="Airex Team">Airex Team</h1>
+<img src="avatars.png" alt="Logo" class="logo">
 
-    <section id="team" class="fade-in">
-      <h2 class="neon-text">Наш состав</h2>
-      <div class="players">
-        <div class="card">
-          <h3>Игрок 1</h3>
-          <p>Капитан</p>
-        </div>
-        <div class="card">
-          <h3>Игрок 2</h3>
-          <p>Снайпер</p>
-        </div>
-        <div class="card">
-          <h3>Игрок 3</h3>
-          <p>Штурмовик</p>
-        </div>
-      </div>
-    </section>
+<!-- Новости -->
+<section id="news" style="padding:20px;">
+<h2>Новости</h2>
+<p>Здесь будут публиковаться новости про состав клана, турниры и розыгрыши.</p>
+</section>
 
-    <section id="contact" class="fade-in">
-      <h2 class="neon-text">Контакты</h2>
-      <p>Связаться с нами: <a href="https://t.me/airex_team" target="_blank">@airex_team</a></p>
-    </section>
-  </main>
+<!-- Состав команды -->
+<section id="team" class="team-container">
+<div class="team">
+<div class="player-card" data-player="Kas"><img src="avatars.png" alt="Kas"><div class="player-name">Kas</div></div>
+<div class="player-card" data-player="rassWet"><img src="avatars.png" alt="rassWet"><div class="player-name">rassWet</div></div>
+<div class="player-card" data-player="Opeek0un"><img src="avatars.png" alt="Opeek0un"><div class="player-name">Opeek0un</div></div>
+<div class="player-card" data-player="Burn"><img src="avatars.png" alt="Burn"><div class="player-name">Burn</div></div>
+<div class="player-card" data-player="Rampage"><img src="avatars.png" alt="Rampage"><div class="player-name">Rampage</div></div>
+<div class="player-card" data-player="ShiNNNe"><img src="avatars.png" alt="ShiNNNe"><div class="player-name">ShiNNNe</div></div>
+<div class="player-card" data-player="sleepyyy"><img src="avatars.png" alt="sleepyyy"><div class="player-name">sleepyyy</div></div>
+<div class="player-card" data-player="Zik"><img src="avatars.png" alt="Zik"><div class="player-name">Zik</div></div>
+<div class="player-card" data-player="Warus"><img src="avatars.png" alt="Warus"><div class="player-name">Warus</div></div>
+<div class="player-card" data-player="Shavryzy"><img src="avatars.png" alt="Shavryzy"><div class="player-name">Shavryzy</div></div>
+<div class="player-card" data-player="KwinzYYY"><img src="avatars.png" alt="KwinzYYY"><div class="player-name">KwinzYYY</div></div>
+<div class="player-card" data-player="Zharaff"><img src="avatars.png" alt="Zharaff"><div class="player-name">Zharaff</div></div>
+<div class="player-card" data-player="Max"><img src="avatars.png" alt="Max"><div class="player-name">Max</div></div>
+<div class="player-card" data-player="Nika"><img src="avatars.png" alt="Nika"><div class="player-name">Nika</div></div>
+<div class="player-card" data-player="Z@e3rux"><img src="avatars.png" alt="Z@e3rux"><div class="player-name">Z@e3rux</div></div>
+</div>
+</section>
 
-  <!-- ГРУППА 3: Футер -->
-  <footer class="fade-in">
-    <p>© 2025 Airex Team</p>
-  </footer>
+<!-- Информация о команде -->
+<section id="info" style="padding:20px;">
+<h2>Информация о команде</h2>
+<p>Airex Team - Киберспортивный клан, основан 10.07.2025. Связаться с капитаном и лидером: <a href="https://t.me/nadji_03" target="_blank">@nadji_03</a>.</p>
+</section>
 
-  <!-- Скрипт для появления блоков при скролле -->
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if(!entry.isIntersecting) return;
-        entry.target.classList.add('appear');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>
+<!-- Модальное окно -->
+<div class="modal" id="modal"><div class="modal-content"><span class="close" id="closeModal">&times;</span><div id="modalText"></div></div></div>
 
+<script>
+/* Данные игроков */
+const playerData={Kas:{avatar:"avatars.png",name:"Неджи",role:"Опорник / Люркер / Cap",experience:"Играю 7 лет, капитан команды и лидер клана Airex Team.",info:"22 года, активно развиваю команду, обучаю игроков и участвую в киберспортивных событиях.",link:"https://t.me/nadji_03"},rassWet:{avatar:"avatars.png",name:"Влад",role:"Anchor",experience:"Играю хорошо на M4A1 и MP7, уверенно отыгрываю на B пленте.",info:"Играю с 2021 года, терял 3 аккаунта, игра нравится.",link:"https://t.me/rassWet11"},Opeek0un:{avatar:"avatars.png",name:"Андрей",role:"Опенфрагер, информатор",experience:"Играю в киберспортивных командах уже год.",info:"Мне 12 лет, часто забираю клатчи, ставлю вантапы.",link:"https://t.me/Smash3d_spell"},Burn:{avatar:"avatars.png",name:"Burn",role:"Саппорт",experience:"Играю хорошо на калаше или MP7, отыгрываю пленки на А или Б.",info:"Играю в Standoff с 2019 года, имею калаш карбон с 4 сумараями.",link:""},Rampage:{avatar:"avatars.png",name:"Rampage",role:"Саппорт",experience:"Играю с 2019 года, хорошо играю на калаше, авике и USP.",info:"Любимая карта Дюн.",link:""},ShiNNNe:{avatar:"avatars.png",name:"ShiNNNe",role:"Anchor",experience:"Играю хорошо на МК с глушаком или авик, отыгрываю в плэнту на А.",info:"Играю Standoff с 2017 года, есть М9 и несколько скинов.",link:""},sleepyyy:{avatar:"avatars.png",name:"sleepyyy",role:"Люркер",experience:"Напы - элита, MM - феникс, дуэли - рэнджер. Играю с калаша и MP7.",info:"Инвентарь: бабочка Black Widow, ID: 210359427, TT: @.sleppyyyyyy",link:""},Zik:{avatar:"avatars.png",name:"Zik",role:"Авапер",experience:"Играю более 3 лет, в киберспортивной команде, ранги: Элит, Мастер, Легенда.",info:"Любимая карта Sedstone, ID: 229118580, нравится команда Airex Team.",link:"https://t.me/Zik_so22"},Warus:{avatar:"avatars.png",name:"Warus",role:"Рифлер",experience:"Опыт около 5 лет, играл в T3/T4 командах в 2023 году, был мастер.",info:"TT: @WARUS1337",link:""},Shavryzy:{avatar:"avatars.png",name:"Shavryzy",role:"Роль игрока",experience:"Описание опыта и навыков.",info:"Дополнительно о игроке.",link:""},KwinzYYY:{avatar:"avatars.png",name:"KwinzYYY",role:"Роль игрока",experience:"Описание опыта и навыков.",info:"Дополнительно о игроке.",link:""},Zharaff:{avatar:"avatars.png",name:"Zharaff",role:"Роль игрока",experience:"Описание опыта и навыков.",info:"Дополнительно о игроке.",link:""},Max:{avatar:"avatars.png",name:"Max",role:"Роль игрока",experience:"Описание опыта и навыков.",info:"Дополнительно о игроке.",link:""},Nika:{avatar:"avatars.png",name:"Nika",role:"Роль игрока",experience:"Описание опыта и навыков.",info:"Дополнительно о игроке.",link:""},Z@e3rux:{avatar:"avatars.png",name:"Z@e3rux",role:"Роль игрока",experience:"Описание опыта и навыков.",info:"Дополнительно о игроке.",link:""}};
+
+/* Модальные окна */
+const modal=document.getElementById("modal");
+const modalText=document.getElementById("modalText");
+const closeModal=document.getElementById("closeModal");
+document.querySelectorAll(".player-card").forEach(card=>{card.addEventListener("click",()=>{const p=playerData[card.dataset.player];modalText.innerHTML=`<h2>${p.name}</h2><p><b>Роль:</b> ${p.role}</p><p><b>Опыт:</b> ${p.experience}</p><p>${p.info}</p><p><a href="${p.link}" target="_blank">Связаться</a></p>`;modal.style.display="flex";});});
+closeModal.onclick=()=>{modal.style.display="none";};
+window.onclick=e=>{if(e.target==modal) modal.style.display="none";};
+
+/* Меню-шторка */
+const menuToggle=document.getElementById("menuToggle");
+const menu=document.getElementById("menu");
+menuToggle.onclick=()=>{menu.classList.toggle("active");};
+</script>
 </body>
 </html>
-<style>
-/* ГРУППА 2: Хедер, навигация, неон и эффекты */
-
-/* Общие стили для тела страницы */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: white;
-  background: linear-gradient(135deg, #000000, #003300, #00cc66);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-}
-
-/* Анимация градиента фона */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Хедер */
-header {
-  text-align: center;
-  padding: 30px;
-}
-
-/* Неоновые заголовки */
-.neon-text {
-  font-size: 2.5em;
-  color: #00ff88;
-  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
-}
-
-/* Навигация */
-nav a.neon-btn {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #00ff88;
-  font-weight: bold;
-  transition: 0.3s;
-  padding: 8px 15px;
-  border-radius: 5px;
-}
-nav a.neon-btn:hover {
-  color: #00ffaa;
-  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
-  box-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88;
-}
-
-/* Кнопка "Подать заявку" с пульсацией */
-.apply-btn {
-  border: 1px solid #00ff88;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0% { box-shadow: 0 0 5px #00ff88; }
-  50% { box-shadow: 0 0 20px #00ff88; }
-  100% { box-shadow: 0 0 5px #00ff88; }
-}
-
-/* Карточки игроков */
-.players {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.card {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid #00ff88;
-  border-radius: 15px;
-  padding: 20px;
-  width: 200px;
-  text-align: center;
-  box-shadow: 0 0 15px #00ff88;
-  transition: 0.3s;
-}
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #00ff88, 0 0 50px #00ff88;
-}
-
-/* Контакты */
-#contact a {
-  color: #00ff88;
-  text-decoration: none;
-  font-weight: bold;
-}
-#contact a:hover {
-  text-shadow: 0 0 10px #00ff88;
-}
-
-/* Плавное появление блоков при скролле */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease-out;
-}
-.fade-in.appear {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
