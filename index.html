@@ -2,36 +2,114 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Мой сайт</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airex Team</title>
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #f1f5f9;
-      text-align: center;
-      padding: 50px;
+      background-color: #0d0d0d;
+      color: #fff;
     }
-    h1 {
-      color: #38bdf8;
+
+    header {
+      background: linear-gradient(90deg, #0f0f0f, #1a1a1a);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #00ffcc;
     }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #38bdf8;
-      color: #0f172a;
-      border-radius: 10px;
+
+    header h1 {
+      margin: 0;
+      color: #00ffcc;
+      font-size: 24px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 12px;
       text-decoration: none;
       font-weight: bold;
+      transition: 0.3s;
     }
+
+    nav a:hover {
+      color: #00ffcc;
+    }
+
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      color: #00ffcc;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid #222;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 15px;
+      background: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
     .btn:hover {
-      background: #0ea5e9;
+      background: #00cc99;
     }
   </style>
 </head>
 <body>
-  <h1>Добро пожаловать 🚀</h1>
-  <p>Этот сайт запущен с телефона через Termux!</p>
-  <a href="https://t.me/airex_team" class="btn">Наш Telegram</a>
+  <header>
+    <h1>Airex Team</h1>
+    <nav>
+      <a href="#about">Главная</a>
+      <a href="#team">Состав</a>
+      <a href="#news">Новости</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>Добро пожаловать!</h2>
+    <p>Мы — киберспортивная команда <strong>Airex Team</strong>.  
+    Сражаемся за победу и стремимся к вершинам!</p>
+    <a href="#contacts" class="btn">Присоединиться</a>
+  </section>
+
+  <section id="team">
+    <h2>Состав команды</h2>
+    <p>⚡ Игроки будут добавлены позже ⚡</p>
+  </section>
+
+  <section id="news">
+    <h2>Новости</h2>
+    <p>Следите за нашими последними победами и турнирами!</p>
+  </section>
+
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <p>📩 Telegram: <a href="https://t.me/airex_team" target="_blank">@airex_team</a></p>
+    <p>📧 Email: djoraevnadji@gmail.com</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Airex Team. Все права защищены.</p>
+  </footer>
 </body>
 </html>
