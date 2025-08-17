@@ -4,190 +4,178 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Airex Team</title>
-  <style>
-    /* ===== Общие стили ===== */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #000000 60%, #003300 100%);
-      color: #e0ffe0;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3 {
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    /* ===== Навигация ===== */
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(0, 20, 0, 0.9);
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      z-index: 100;
-      backdrop-filter: blur(6px);
-    }
-
-    nav a {
-      color: #00ff66;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      padding: 8px 12px;
-      border-radius: 8px;
-    }
-
-    nav a:hover {
-      background: #00ff66;
-      color: #000;
-    }
-
-    /* ===== Хедер ===== */
-    header {
-      text-align: center;
-      padding: 100px 20px;
-      position: relative;
-      background: radial-gradient(circle, rgba(0,100,0,0.3), transparent);
-      overflow: hidden;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      color: #00ff66;
-      text-shadow: 0 0 15px #00ff66;
-      animation: glow 2s infinite alternate;
-    }
-
-    header img {
-      width: 120px;
-      margin-top: 20px;
-      filter: drop-shadow(0 0 20px #00ff66);
-      animation: floatLogo 4s infinite ease-in-out;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #00ff66; }
-      to { text-shadow: 0 0 25px #00ff66, 0 0 50px #00cc44; }
-    }
-
-    @keyframes floatLogo {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    /* ===== Секции ===== */
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    section:nth-child(even) {
-      background: rgba(0, 40, 0, 0.7);
-    }
-
-    /* ===== Карточки ===== */
-    .cards {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      padding: 20px;
-      scrollbar-width: thin;
-    }
-
-    .card {
-      min-width: 250px;
-      background: #001a00;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(0,255,100,0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
-      flex: 0 0 auto;
-    }
-
-    .card:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 0 25px rgba(0,255,100,0.5);
-    }
-
-    /* ===== Футер ===== */
-    footer {
-      background: #000;
-      color: #00ff66;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      border-top: 2px solid #00ff66;
-    }
-
-    /* ===== Эффекты для телефона ===== */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      nav {
-        flex-wrap: wrap;
-      }
-      .cards {
-        gap: 10px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Навигация -->
-  <nav>
-    <a href="#about">О нас</a>
-    <a href="#team">Состав</a>
-    <a href="#matches">Матчи</a>
-    <a href="#contacts">Контакты</a>
-  </nav>
-
-  <!-- Хедер -->
+  <!-- ГРУППА 1: Хедер и навигация -->
   <header>
-    <h1>Airex Team</h1>
-    <img src="logo.png" alt="Логотип команды">
+    <h1 class="neon-text">Airex Team</h1>
+    <nav>
+      <a href="#about" class="neon-btn">О нас</a>
+      <a href="#team" class="neon-btn">Состав</a>
+      <a href="#contact" class="neon-btn">Контакты</a>
+      <a href="#contact" class="neon-btn apply-btn">Подать заявку</a>
+    </nav>
   </header>
 
-  <!-- О нас -->
-  <section id="about">
-    <h2>О нас</h2>
-    <p>Мы киберспортивная команда, которая стремится к победам. Сильные, быстрые и готовые к вызовам!</p>
-  </section>
+  <!-- ГРУППА 2: Основные секции -->
+  <main>
+    <section id="about" class="fade-in">
+      <h2 class="neon-text">О команде</h2>
+      <p>Мы — киберспортивная команда Airex Team. Сражаемся за победу и стиль 🔥</p>
+    </section>
 
-  <!-- Состав -->
-  <section id="team">
-    <h2>Состав</h2>
-    <div class="cards">
-      <div class="card">Игрок 1</div>
-      <div class="card">Игрок 2</div>
-      <div class="card">Игрок 3</div>
-      <div class="card">Игрок 4</div>
-      <div class="card">Игрок 5</div>
-    </div>
-  </section>
+    <section id="team" class="fade-in">
+      <h2 class="neon-text">Наш состав</h2>
+      <div class="players">
+        <div class="card">
+          <h3>Игрок 1</h3>
+          <p>Капитан</p>
+        </div>
+        <div class="card">
+          <h3>Игрок 2</h3>
+          <p>Снайпер</p>
+        </div>
+        <div class="card">
+          <h3>Игрок 3</h3>
+          <p>Штурмовик</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Матчи -->
-  <section id="matches">
-    <h2>Матчи</h2>
-    <p>Следите за нашими играми и достижениями здесь!</p>
-  </section>
+    <section id="contact" class="fade-in">
+      <h2 class="neon-text">Контакты</h2>
+      <p>Связаться с нами: <a href="https://t.me/airex_team" target="_blank">@airex_team</a></p>
+    </section>
+  </main>
 
-  <!-- Контакты -->
-  <section id="contacts">
-    <h2>Контакты</h2>
-    <p>Свяжитесь с нами: <strong>airex.team@gmail.com</strong></p>
-  </section>
-
-  <!-- Футер -->
-  <footer>
-    © 2025 Airex Team. Все права защищены.
+  <!-- ГРУППА 3: Футер -->
+  <footer class="fade-in">
+    <p>© 2025 Airex Team</p>
   </footer>
+
+  <!-- Скрипт для появления блоков при скролле -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('appear');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
 
 </body>
 </html>
+<style>
+/* ГРУППА 2: Хедер, навигация, неон и эффекты */
+
+/* Общие стили для тела страницы */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #000000, #003300, #00cc66);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Анимация градиента фона */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Хедер */
+header {
+  text-align: center;
+  padding: 30px;
+}
+
+/* Неоновые заголовки */
+.neon-text {
+  font-size: 2.5em;
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+}
+
+/* Навигация */
+nav a.neon-btn {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #00ff88;
+  font-weight: bold;
+  transition: 0.3s;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+nav a.neon-btn:hover {
+  color: #00ffaa;
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+  box-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88;
+}
+
+/* Кнопка "Подать заявку" с пульсацией */
+.apply-btn {
+  border: 1px solid #00ff88;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px #00ff88; }
+  50% { box-shadow: 0 0 20px #00ff88; }
+  100% { box-shadow: 0 0 5px #00ff88; }
+}
+
+/* Карточки игроков */
+.players {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #00ff88;
+  border-radius: 15px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 0 15px #00ff88;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00ff88, 0 0 50px #00ff88;
+}
+
+/* Контакты */
+#contact a {
+  color: #00ff88;
+  text-decoration: none;
+  font-weight: bold;
+}
+#contact a:hover {
+  text-shadow: 0 0 10px #00ff88;
+}
+
+/* Плавное появление блоков при скролле */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-out;
+}
+.fade-in.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
