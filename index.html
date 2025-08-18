@@ -1,107 +1,219 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Современное меню</title>
-<style>
-  /* Сброс стилей */
-  * {margin: 0; padding: 0; box-sizing: border-box;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airex Team</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #000000, #003300, #00ff66);
+      background-size: 300% 300%;
+      animation: gradientMove 12s ease infinite;
+      color: white;
+    }
 
-  /* Основной стиль меню */
-  body {font-family: Arial, sans-serif;}
-  nav {
-    position: fixed;
-    top: 0; left: 0; width: 100%;
-    background: linear-gradient(90deg, #0a3d2e, #013220);
-    padding: 10px 20px;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  }
-  .logo {color: white; font-size: 24px; font-weight: bold;}
-  ul {list-style: none; display: flex; gap: 25px;}
-  li {position: relative;}
-  a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s, transform 0.3s;
-  }
-  a:hover {color: #00ff99; transform: scale(1.1);}
-  
-  /* Подменю */
-  li ul {
-    display: none;
-    position: absolute;
-    top: 35px;
-    left: 0;
-    background: #013220;
-    padding: 10px 0;
-    border-radius: 5px;
-  }
-  li:hover ul {display: block;}
-  li ul li {padding: 5px 20px;}
-  li ul li a:hover {color: #00ffcc;}
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  /* Гамбургер для мобильных */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-  }
-  .hamburger div {
-    width: 25px; height: 3px;
-    background: white;
-    transition: all 0.3s;
-  }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.7);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-  /* Адаптивность */
-  @media (max-width: 768px) {
-    ul {display: none; flex-direction: column; background: #0a3d2e; width: 100%; position: absolute; top: 55px; left: 0;}
-    ul.active {display: flex;}
-    .hamburger {display: flex;}
-  }
-</style>
+    header h1 {
+      font-size: 28px;
+      color: #00ff66;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ff66;
+    }
+
+    .hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 60px;
+      font-weight: bold;
+      margin: 0;
+      color: #00ff66;
+      text-shadow: 0 0 20px #00ff66;
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin: 15px 0;
+    }
+
+    .hero button {
+      background: #00ff66;
+      border: none;
+      padding: 15px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hero button:hover {
+      background: #009944;
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 60px 80px;
+    }
+
+    section h3 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      border-left: 6px solid #00ff66;
+      padding-left: 15px;
+    }
+
+    .players, .matches, .news {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px #00ff66;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 30px;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #00ff66;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Airex Team</h1>
+    <nav>
+      <a href="#players">Состав</a>
+      <a href="#matches">Матчи</a>
+      <a href="#news">Новости</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </header>
 
-<nav>
-  <div class="logo">MySite</div>
-  <ul id="menu">
-    <li><a href="index.html">Главная</a></li>
-    <li>
-      <a href="tournaments.html">Турниры</a>
-      <ul>
-        <li><a href="#">Онлайн</a></li>
-        <li><a href="#">Офлайн</a></li>
-      </ul>
-    </li>
-    <li><a href="clans.html">Кланы</a></li>
-    <li><a href="price.html">Прайс</a></li>
-    <li><a href="contact.html">Контакты</a></li>
-  </ul>
-  <div class="hamburger" id="hamburger">
-    <div></div><div></div><div></div>
+  <div class="hero">
+    <h2>Добро пожаловать в Airex Team</h2>
+    <p>Киберспортивная команда нового поколения</p>
+    <button>Подробнее</button>
   </div>
-</nav>
 
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('menu');
+  <section id="players">
+    <h3>Состав</h3>
+    <div class="players">
+      <div class="card">
+        <img src="player1.jpg" alt="Игрок 1">
+        <h4>Ник игрока</h4>
+        <p>Роль</p>
+      </div>
+      <div class="card">
+        <img src="player2.jpg" alt="Игрок 2">
+        <h4>Ник игрока</h4>
+        <p>Роль</p>
+      </div>
+      <div class="card">
+        <img src="player3.jpg" alt="Игрок 3">
+        <h4>Ник игрока</h4>
+        <p>Роль</p>
+      </div>
+    </div>
+  </section>
 
-  hamburger.addEventListener('click', () => {
-    menu.classList.toggle('active');
-  });
-</script>
+  <section id="matches">
+    <h3>Матчи</h3>
+    <div class="matches">
+      <div class="card">
+        <h4>Airex Team vs Jabber</h4>
+        <p>17 августа • 14:00 МСК</p>
+      </div>
+      <div class="card">
+        <h4>Airex Team vs XYZ</h4>
+        <p>20 августа • 19:00 МСК</p>
+      </div>
+    </div>
+  </section>
 
-<!-- Контент для теста -->
-<div style="height:2000px; padding-top:80px;">
-  <h1 style="text-align:center; margin-top:50px; color:#013220;">Пример контента сайта</h1>
-</div>
+  <section id="news">
+    <h3>Новости</h3>
+    <div class="news">
+      <div class="card">
+        <img src="news1.jpg" alt="Новость 1">
+        <h4>Заголовок новости</h4>
+        <p>Краткое описание новости...</p>
+      </div>
+      <div class="card">
+        <img src="news2.jpg" alt="Новость 2">
+        <h4>Заголовок новости</h4>
+        <p>Краткое описание новости...</p>
+      </div>
+    </div>
+  </section>
 
+  <footer id="contacts">
+    <p>© 2025 Airex Team. Все права защищены.</p>
+    <p>
+      <a href="#">VK</a> |
+      <a href="#">Telegram</a> |
+      <a href="#">YouTube</a>
+    </p>
+  </footer>
 </body>
 </html>
