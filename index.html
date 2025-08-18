@@ -5,237 +5,154 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Airex Team</title>
   <style>
-    body {
+    /* ======= Общие стили ======= */
+    body, html {
       margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: Arial, sans-serif;
-      background: #000; /* Чёрный фон */
+      background: black;
       color: white;
+      scroll-behavior: smooth;
       overflow-x: hidden;
     }
 
-    /* --- АНИМАЦИЯ ДЫМА --- */
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #00ff66;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    /* ======= Фон с дымом ======= */
     .smoke {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
-      z-index: -1;
-      overflow: hidden;
+      background: url('https://i.ibb.co/8jDP5s0/smoke-green.png') repeat;
+      background-size: cover;
+      opacity: 0.3;
+      animation: moveSmoke 20s linear infinite;
+      z-index: 0;
     }
 
-    .smoke span {
-      position: absolute;
-      display: block;
-      width: 500px;
-      height: 500px;
-      background: rgba(0, 255, 100, 0.15); /* Зелёный дым */
-      border-radius: 50%;
-      filter: blur(120px);
-      animation: smokeAnim 18s linear infinite;
+    @keyframes moveSmoke {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 0; }
     }
 
-    /* Разные позиции и задержки */
-    .smoke span:nth-child(1) {
-      top: 80%;
-      left: 20%;
-      animation-delay: 0s;
-    }
-    .smoke span:nth-child(2) {
-      top: 90%;
-      left: 50%;
-      animation-delay: 6s;
-    }
-    .smoke span:nth-child(3) {
-      top: 85%;
-      left: 75%;
-      animation-delay: 12s;
-    }
-
-    /* Движение дыма вверх с циклом */
-    @keyframes smokeAnim {
-      0% {
-        transform: translateY(0) scale(0.6);
-        opacity: 0;
-      }
-      20% {
-        opacity: 0.6;
-      }
-      50% {
-        transform: translateY(-300px) scale(1);
-        opacity: 0.4;
-      }
-      80% {
-        opacity: 0.2;
-      }
-      100% {
-        transform: translateY(-600px) scale(1.2);
-        opacity: 0;
-      }
-    }
-
-    /* --- Шапка --- */
-    header {
+    /* ======= Карточки секций ======= */
+    .cards {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-      background: rgba(0, 0, 0, 0.85);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    header h1 {
-      font-size: 28px;
-      color: #00ff66;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #00ff66;
-    }
-
-    /* --- Hero --- */
-    .hero {
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px auto;
+      z-index: 2;
+      position: relative;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ff66;
+      border-radius: 15px;
+      padding: 30px 40px;
       text-align: center;
-    }
-
-    .hero h2 {
-      font-size: 60px;
+      font-size: 1.2rem;
       font-weight: bold;
-      margin: 0;
-      color: #00ff66;
-      text-shadow: 0 0 20px #00ff66;
-    }
-
-    .hero p {
-      font-size: 22px;
-      margin: 15px 0;
-    }
-
-    .hero button {
-      background: #00ff66;
-      border: none;
-      padding: 15px 40px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 5px;
+      color: white;
       cursor: pointer;
       transition: 0.3s;
+      min-width: 200px;
     }
 
-    .hero button:hover {
-      background: #009944;
+    .card:hover {
       transform: scale(1.05);
+      background: rgba(0, 255, 102, 0.1);
+      box-shadow: 0 0 20px #00ff66;
+    }
+
+    /* ======= Разделы ======= */
+    section {
+      padding: 100px 20px;
+      text-align: center;
+      min-height: 70vh;
+      position: relative;
+      z-index: 2;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00ff66;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ======= Футер ======= */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      color: #777;
+      z-index: 2;
+      position: relative;
     }
   </style>
 </head>
 <body>
-  <!-- ЭФФЕКТ ЗЕЛЁНОГО ДЫМА -->
-  <div class="smoke">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <div class="smoke"></div>
 
-  <!-- ШАПКА -->
+  <!-- Шапка -->
   <header>
     <h1>Airex Team</h1>
-    <nav>
-      <a href="#players">Состав</a>
-      <a href="#matches">Матчи</a>
-      <a href="#news">Новости</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
+    <p>Добро пожаловать на официальный сайт команды</p>
   </header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <h2>Добро пожаловать в Airex Team</h2>
-    <p>Киберспортивная команда нового поколения</p>
-    <button>Подробнее</button>
+  <!-- Карточки -->
+  <div class="cards">
+    <div class="card" onclick="document.getElementById('team').scrollIntoView()">Состав</div>
+    <div class="card" onclick="document.getElementById('news').scrollIntoView()">Новости</div>
+    <div class="card" onclick="document.getElementById('about').scrollIntoView()">О клане</div>
   </div>
-</body>
-</html>
 
-  <!-- СОСТАВ -->
-  <section id="players">
-    <h3>Состав</h3>
-    <div class="players">
-      <div class="card">
-        <img src="player1.jpg" alt="Игрок 1">
-        <h4>Ник игрока</h4>
-        <p>Роль</p>
-      </div>
-      <div class="card">
-        <img src="player2.jpg" alt="Игрок 2">
-        <h4>Ник игрока</h4>
-        <p>Роль</p>
-      </div>
-      <div class="card">
-        <img src="player3.jpg" alt="Игрок 3">
-        <h4>Ник игрока</h4>
-        <p>Роль</p>
-      </div>
-    </div>
+  <!-- Разделы -->
+  <section id="team">
+    <h2>Состав</h2>
+    <p>Здесь будет список игроков Airex Team.</p>
   </section>
 
-  <!-- МАТЧИ -->
-  <section id="matches">
-    <h3>Матчи</h3>
-    <div class="matches">
-      <div class="card">
-        <h4>Airex Team vs Jabber</h4>
-        <p>17 августа • 14:00 МСК</p>
-      </div>
-      <div class="card">
-        <h4>Airex Team vs XYZ</h4>
-        <p>20 августа • 19:00 МСК</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- НОВОСТИ -->
   <section id="news">
-    <h3>Новости</h3>
-    <div class="news">
-      <div class="card">
-        <img src="news1.jpg" alt="Новость 1">
-        <h4>Заголовок новости</h4>
-        <p>Краткое описание новости...</p>
-      </div>
-      <div class="card">
-        <img src="news2.jpg" alt="Новость 2">
-        <h4>Заголовок новости</h4>
-        <p>Краткое описание новости...</p>
-      </div>
-    </div>
+    <h2>Новости</h2>
+    <p>Здесь будут последние события и новости команды.</p>
   </section>
 
-  <!-- ФУТЕР -->
-  <footer id="contacts">
-    <p>© 2025 Airex Team. Все права защищены.</p>
-    <p>
-      <a href="#">VK</a> |
-      <a href="#">Telegram</a> |
-      <a href="#">YouTube</a>
-    </p>
+  <section id="about">
+    <h2>О клане</h2>
+    <p>Здесь будет информация об истории и целях Airex Team.</p>
+  </section>
+
+  <!-- Футер -->
+  <footer>
+    © 2025 Airex Team. Все права защищены.
   </footer>
 </body>
 </html>
